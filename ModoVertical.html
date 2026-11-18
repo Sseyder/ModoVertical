@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modo Vertical: producción de contenido vertical, coberturas, reels y experiencias para eventos, shows y marcas.">
+    <meta name="theme-color" content="#0A0A0C">
+    <title>MV | Modo Vertical — Portfolio Oficial</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        mvbg: '#0A0A0C',
+                        mvcard: '#111116',
+                        mvborder: '#22222c',
+                        mvpink: '#FF1E6E',
+                        mvpinkLight: '#FF4788'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Montserrat & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #0A0A0C;
+            color: #f4f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .font-display {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0A0A0C; }
+        ::-webkit-scrollbar-thumb { background: #22222c; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FF1E6E; }
+
+        /* Marco de celular 9:16 realista */
+        .phone-mockup {
+            aspect-ratio: 9 / 16;
+            border: 3px solid #2b2b36;
+            border-radius: 32px;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.85);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.35s ease;
+        }
+        .phone-mockup:hover {
+            transform: translateY(-6px);
+            border-color: #FF1E6E;
+            box-shadow: 0 24px 45px -10px rgba(255, 30, 110, 0.3);
+        }
+        .phone-island {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 72px;
+            height: 18px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 30;
+            border: 1px solid #1f1f26;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FF4788 0%, #FF1E6E 60%, #b80045 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-mvbg text-gray-100 antialiased selection:bg-mvpink selection:text-white">
+    <!-- NAVBAR FIJO -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-mvbg/85 backdrop-blur-xl border-b border-mvborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2.5 group shrink-0">
+                <span class="font-display text-2xl sm:text-3xl font-black tracking-tight text-white">mv</span>
+                <span class="h-6 w-[2px] bg-mvpink rounded-full"></span>
+                <div class="flex flex-col leading-none">
+                    <span class="font-display text-xs sm:text-sm font-extrabold tracking-widest uppercase text-white">modo</span>
+                    <span class="font-display text-xs sm:text-sm font-extrabold tracking-widest uppercase text-mvpinkLight">vertical<span class="text-white">.</span></span>
+                </div>
+            </a>
+
+            <!-- Links Desktop -->
+            <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-gray-300">
+                <a href="#que-es" class="hover:text-mvpinkLight transition-colors">Qué hacemos</a>
+                <a href="#nosotros" class="hover:text-mvpinkLight transition-colors">Nosotros</a>
+                <a href="#proyectos" class="hover:text-mvpinkLight transition-colors">Trabajos & Shows</a>
+                <a href="#estadisticas" class="hover:text-mvpinkLight transition-colors">Resultados</a>
+                <a href="#contacto" class="hover:text-mvpinkLight transition-colors">Contacto</a>
+            </nav>
+
+            <!-- Botones de Acción Navbar -->
+            <div class="flex items-center gap-2.5">
+                <a href="#proyectos" class="px-4 py-2.5 rounded-full bg-mvcard hover:bg-mvborder border border-mvpink/50 text-xs sm:text-sm font-semibold text-white flex items-center gap-2 transition-all shadow-sm">
+                    <i class="fa-solid fa-play text-mvpinkLight"></i>
+                    <span>Ver Carrusel</span>
+                </a>
+                <a href="#contacto" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-mvpink hover:bg-mvpinkLight text-white text-sm font-bold shadow-lg shadow-mvpink/30 transition-all">
+                    Trabajemos juntos
+                </a>
+                <!-- Botón Menú Móvil -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl bg-mvcard border border-mvborder text-gray-200 hover:text-mvpinkLight">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Drawer Móvil -->
+        <div id="mobile-drawer" class="hidden lg:hidden bg-mvbg border-b border-mvborder px-6 py-5 space-y-3">
+            <a href="#que-es" class="mobile-nav-link block py-2 text-base font-semibold text-gray-200 hover:text-mvpinkLight">Qué hacemos</a>
+            <a href="#nosotros" class="mobile-nav-link block py-2 text-base font-semibold text-gray-200 hover:text-mvpinkLight">Nosotros</a>
+            <a href="#proyectos" class="mobile-nav-link block py-2 text-base font-semibold text-gray-200 hover:text-mvpinkLight">Trabajos & Shows</a>
+            <a href="#estadisticas" class="mobile-nav-link block py-2 text-base font-semibold text-gray-200 hover:text-mvpinkLight">Resultados</a>
+            <a href="#contacto" class="mobile-nav-link block py-2 text-base font-semibold text-mvpinkLight">Trabajemos juntos →</a>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
+        <!-- Luces ambientales -->
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[340px] sm:w-[680px] h-[340px] sm:h-[680px] bg-mvpink/15 rounded-full blur-[130px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-mvcard border border-mvborder text-mvpinkLight text-xs font-bold tracking-[0.2em] uppercase mb-6">
+                <span class="w-2 h-2 rounded-full bg-mvpinkLight animate-ping"></span>
+                CREACIÓN DE CONTENIDO VERTICAL • COBERTURAS • REELS
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white uppercase leading-[1.08] mb-6">
+                mv <span class="text-mvpink">|</span> PORTFOLIO <br>
+                <span class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gray-200 normal-case block mt-3">
+                    Somos el backstage de tu evento.
+                </span>
+            </h1>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#proyectos" class="w-full sm:w-auto px-8 py-4 rounded-full bg-mvpink hover:bg-mvpinkLight text-white font-bold text-base shadow-xl shadow-mvpink/30 transition-all flex items-center justify-center gap-2.5">
+                    <span>Ver carrusel de shows</span>
+                    <i class="fa-solid fa-play text-xs"></i>
+                </a>
+                <a href="#contacto" class="w-full sm:w-auto px-8 py-4 rounded-full bg-mvcard hover:bg-mvborder border border-mvborder text-white font-bold text-base transition-all flex items-center justify-center gap-2">
+                    <span>Contactar ahora</span>
+                    <i class="fa-solid fa-arrow-right text-xs text-mvpinkLight"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SECCIÓN: ¿QUÉ ES MODO VERTICAL? + GRILLA -->
+    <section id="que-es" class="py-20 sm:py-24 bg-mvcard/60 border-y border-mvborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-14">
+                <span class="text-mvpinkLight font-display text-xs font-extrabold tracking-[0.25em] uppercase">Propuesta de valor</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-black text-white uppercase mt-2 mb-5">
+                    ¿Qué es <span class="text-mvpink">Modo Vertical</span>?
+                </h2>
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                    Somos una agencia de <strong class="text-white">contenido</strong> enfocada en crear videos dinámicos, divertidos y espontáneos para eventos. Nos gusta involucrarnos y aportar una cuota de <strong class="text-white">entretenimiento</strong> dentro de cada experiencia.
+                </p>
+            </div>
+
+            <!-- Rubros en los que trabajamos -->
+            <div class="mb-6 flex items-center gap-3">
+                <span class="font-display text-xl sm:text-2xl font-black text-white uppercase tracking-wider">TRABAJAMOS EN<span class="text-mvpink">...</span></span>
+                <div class="h-[1px] flex-1 bg-mvborder"></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="p-6 rounded-2xl bg-mvbg border border-mvborder hover:border-mvpink/60 transition-all"><div class="text-mvpinkLight text-2xl mb-3"><i class="fa-solid fa-champagne-glasses"></i></div><h3 class="font-display text-lg font-bold text-white">Casamientos / Cumpleaños de 15</h3></div>
+                <div class="p-6 rounded-2xl bg-mvbg border border-mvborder hover:border-mvpink/60 transition-all"><div class="text-mvpinkLight text-2xl mb-3"><i class="fa-solid fa-microphone-lines"></i></div><h3 class="font-display text-lg font-bold text-white">Shows y Recitales</h3></div>
+                <div class="p-6 rounded-2xl bg-mvbg border border-mvborder hover:border-mvpink/60 transition-all"><div class="text-mvpinkLight text-2xl mb-3"><i class="fa-solid fa-calendar-days"></i></div><h3 class="font-display text-lg font-bold text-white">Fiestas y Eventos Sociales y Corporativos</h3></div>
+                <div class="p-6 rounded-2xl bg-mvbg border border-mvborder hover:border-mvpink/60 transition-all"><div class="text-mvpinkLight text-2xl mb-3"><i class="fa-solid fa-martini-glass-citrus"></i></div><h3 class="font-display text-lg font-bold text-white">Bares, Boliches y Fiestas</h3></div>
+                <div class="p-6 rounded-2xl bg-mvbg border border-mvborder hover:border-mvpink/60 transition-all"><div class="text-mvpinkLight text-2xl mb-3"><i class="fa-solid fa-masks-theater"></i></div><h3 class="font-display text-lg font-bold text-white">Teatros y Cultura</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SECCIÓN: ¿QUIÉNES SOMOS? -->
+    <section id="nosotros" class="py-20 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="rounded-3xl bg-gradient-to-br from-mvcard via-[#14111a] to-mvbg border border-mvborder p-8 sm:p-12 lg:p-16 relative overflow-hidden">
+                <div class="absolute -right-24 -bottom-24 w-80 h-80 bg-mvpink/15 rounded-full blur-[90px] pointer-events-none"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+                    <div class="lg:col-span-7">
+                        <span class="text-mvpinkLight font-display text-xs font-extrabold tracking-[0.25em] uppercase">El equipo detrás de cámara</span>
+                        <h2 class="font-display text-3xl sm:text-5xl font-black text-white uppercase mt-2 mb-6">¿Quiénes <span class="text-mvpink">Somos</span>?</h2>
+                        <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-5">Somos <strong class="text-white">actrices y creadoras de contenido</strong>. Somos apasionadas de las redes sociales y nos encanta transformar ideas en contenido divertido y auténtico.</p>
+                        <p class="text-gray-400 text-base leading-relaxed mb-8">Nos involucramos en cada evento desde adentro: conectamos con la gente, encontramos esos momentos espontáneos que hacen única cada experiencia y los convertimos en videos que transmiten lo que se vivió. Combinamos nuestra experiencia frente a cámara con creatividad, cercanía y una mirada fresca para contar cada historia.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-7">
+                            <div class="rounded-2xl bg-mvbg border border-mvborder p-4">
+                                <div class="aspect-[4/3] rounded-xl bg-gradient-to-br from-mvpink/20 to-mvcard border border-mvpink/30 flex flex-col items-center justify-center mb-3 overflow-hidden">
+                                    <img src="/imgs/Valentina.jpg" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Valentina Marsilli">
+                                </div>
+                                <h3 class="font-display text-lg font-black text-white">Valentina Marsilli</h3>
+                                <p class="text-xs text-mvpinkLight font-semibold mt-0.5">Co-fundadora & Creadora</p>
+                            </div>
+                            <div class="rounded-2xl bg-mvbg border border-mvborder p-4">
+                                <div class="aspect-[4/3] rounded-xl bg-gradient-to-br from-mvpink/20 to-mvcard border border-mvpink/30 flex flex-col items-center justify-center mb-3 overflow-hidden">
+                                    <img src="/imgs/Luli.jpg" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Luciana Fernandez">
+                                </div>
+                                <h3 class="font-display text-lg font-black text-white">Luciana Fernandez</h3>
+                                <p class="text-xs text-mvpinkLight font-semibold mt-0.5">Co-fundadora & Productora</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                        <div class="p-6 rounded-2xl bg-mvbg/90 border border-mvborder text-center">
+                            <div class="text-3xl sm:text-4xl font-display font-black text-mvpinkLight mb-1">9:16</div>
+                            <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Formato Nativo</div>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-mvbg/90 border border-mvborder text-center">
+                            <div class="text-3xl sm:text-4xl font-display font-black text-white mb-1">+3s</div>
+                            <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Gancho Visual</div>
+                        </div>
+                        <div class="col-span-2 p-6 rounded-2xl bg-mvpink/10 border border-mvpink/30 text-center">
+                            <div class="font-display text-lg font-extrabold text-white mb-1">Contenido Orgánico que Conecta</div>
+                            <div class="text-xs text-gray-300">De la previa en la fila hasta el cierre del show</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN PRINCIPAL: CARRUSEL INTERACTIVO DE VIDEOS Y SHOWS -->
+    <section id="proyectos" class="py-20 sm:py-28 bg-mvcard/40 border-t border-mvborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Encabezado Sección -->
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-mvpinkLight font-display text-xs font-extrabold tracking-[0.25em] uppercase">Casos Reales</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-black text-white uppercase mt-2 mb-4">
+                    Shows, Eventos y <span class="text-mvpink">Carrusel de Videos</span>
+                </h2>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    Explora nuestra selección de coberturas verticales con reproducción automática y carrusel interactivo para navegar entre los mejores momentos.
+                </p>
+            </div>
+
+            <!-- Pestañas de Proyectos / Carrusel Control -->
+            <div class="flex flex-wrap items-center justify-center gap-2.5 mb-12" id="project-tabs">
+                <button onclick="switchProject('cumbiarocha')" class="tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-mvpink text-white transition-all shadow-md">Cumbia Rocha</button>
+                <button onclick="switchProject('ruta360')" class="tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-mvcard text-gray-300 hover:text-white border border-mvborder transition-all">Ruta 360</button>
+                <button onclick="switchProject('target')" class="tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-mvcard text-gray-300 hover:text-white border border-mvborder transition-all">Target Bar</button>
+                <button onclick="switchProject('trucostars')" class="tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-mvcard text-gray-300 hover:text-white border border-mvborder transition-all">Trucostars</button>
+                <button onclick="switchProject('latoxi')" class="tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-mvcard text-gray-300 hover:text-white border border-mvborder transition-all">La Toxi</button>
+                <button onclick="switchProject('tinafest')" class="tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-mvcard text-gray-300 hover:text-white border border-mvborder transition-all">Tina Fest</button>
+            </div>
+
+            <!-- CONTENEDOR DEL PROYECTO ACTIVO -->
+            <div id="carousel-display-area" class="transition-all duration-500">
+                <!-- Se inyecta dinámicamente mediante JS para una experiencia de carrusel ultra fluida -->
+            </div>
+
+            <!-- Controles de Navegación del Carrusel -->
+            <div class="flex items-center justify-center gap-4 mt-8">
+                <button onclick="prevProject()" class="p-3 rounded-full bg-mvcard border border-mvborder hover:border-mvpink text-white text-sm transition-all flex items-center gap-2 px-6">
+                    <i class="fa-solid fa-arrow-left"><span>Anterior show</span></i>
+                </button>
+                <button onclick="nextProject()" class="p-3 rounded-full bg-mvcard border border-mvborder hover:border-mvpink text-white text-sm transition-all flex items-center gap-2 px-6">
+                    <span>Siguiente show</span><i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SECCIÓN: ESTADÍSTICAS REALES DE INSTAGRAM REELS -->
+    <section id="estadisticas" class="py-20 sm:py-28 border-t border-mvborder relative overflow-hidden">
+        <div class="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] bg-mvpink/12 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Encabezado -->
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-mvpinkLight font-display text-xs font-extrabold tracking-[0.25em] uppercase">Métricas Reales de Instagram Reels</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-black text-white uppercase mt-2 mb-4">
+                    modo vertical <span class="text-mvpink">|</span> estadísticas
+                </h2>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    Resultados orgánicos comprobados en nuestras producciones, combinando estrategia digital, colaboraciones y contenido nativo 9:16.
+                </p>
+            </div>
+
+            <!-- KPIs Globales Destacados -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+                <div class="p-6 sm:p-7 rounded-3xl bg-mvcard border border-mvborder hover:border-mvpink transition-all">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-mvpinkLight text-xl"><i class="fa-solid fa-eye"></i></span>
+                        <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-mvpink/15 text-mvpinkLight">Top 4 Reels</span>
+                    </div>
+                    <div class="font-display text-3xl sm:text-4xl font-black text-white mb-1">+693.6K</div>
+                    <div class="text-sm text-gray-400 font-medium">Visualizaciones orgánicas acumuladas</div>
+                </div>
+
+                <div class="p-6 sm:p-7 rounded-3xl bg-mvcard border border-mvborder hover:border-mvpink transition-all">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-mvpinkLight text-xl"><i class="fa-solid fa-users"></i></span>
+                        <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400">Alcance Real</span>
+                    </div>
+                    <div class="font-display text-3xl sm:text-4xl font-black text-white mb-1">+288.6K</div>
+                    <div class="text-sm text-gray-400 font-medium">Espectadores y cuentas alcanzadas</div>
+                </div>
+
+                <div class="p-6 sm:p-7 rounded-3xl bg-mvcard border border-mvborder hover:border-mvpink transition-all">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-mvpinkLight text-xl"><i class="fa-solid fa-heart"></i></span>
+                        <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-mvpink/15 text-mvpinkLight">Engagement</span>
+                    </div>
+                    <div class="font-display text-3xl sm:text-4xl font-black text-white mb-1">+13.6K</div>
+                    <div class="text-sm text-gray-400 font-medium">Interacciones (likes, envíos y guardados)</div>
+                </div>
+
+                <div class="p-6 sm:p-7 rounded-3xl bg-mvcard border border-mvborder hover:border-mvpink transition-all">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-mvpinkLight text-xl"><i class="fa-solid fa-user-plus"></i></span>
+                        <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400">Comunidad</span>
+                    </div>
+                    <div class="font-display text-3xl sm:text-4xl font-black text-white mb-1">+230</div>
+                    <div class="text-sm text-gray-400 font-medium">Nuevos seguidores orgánicos directos</div>
+                </div>
+            </div>
+
+            <!-- 4 TARJETAS MOCKUP DE ESTADÍSTICAS REALES DE INSTAGRAM REELS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-20">
+                <!-- REEL 1 -->
+                <div class="rounded-3xl bg-[#121216] border border-mvborder hover:border-mvpink/60 p-5 flex flex-col justify-between shadow-2xl transition-all">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 mb-4 border-b border-mvborder">
+                            <span class="text-xs font-bold text-white flex items-center gap-1.5">
+                                <i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i> Estadísticas del reel
+                            </span>
+                            <span class="w-6 h-6 rounded-full bg-mvcard border border-mvborder flex items-center justify-center text-[10px] text-mvpinkLight">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                            </span>
+                        </div>
+                        <div class="rounded-2xl bg-gradient-to-br from-rose-950/70 via-mvbg to-mvcard border border-mvborder p-3.5 mb-4 text-center">
+                            <span class="inline-block px-2.5 py-0.5 rounded-full bg-mvpink/20 text-mvpinkLight text-[10px] font-bold uppercase mb-1.5">Previa Recital • Ruta 360</span>
+                            <p class="font-display text-xs font-extrabold text-white leading-snug">"¿Cuánto se gasta para venir a ver a BTS?"</p>
+                        </div>
+                        <div class="grid grid-cols-5 gap-1 text-center py-2.5 mb-4 rounded-xl bg-mvbg border border-mvborder">
+                            <div><i class="fa-regular fa-heart text-xs text-mvpinkLight block mb-0.5"></i><span class="text-[11px] font-bold text-white">4,3 mil</span></div>
+                            <div><i class="fa-regular fa-comment text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">314</span></div>
+                            <div><i class="fa-solid fa-retweet text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">37</span></div>
+                            <div><i class="fa-regular fa-paper-plane text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">842</span></div>
+                            <div><i class="fa-regular fa-bookmark text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">178</span></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <div class="p-3 rounded-xl bg-mvbg border border-mvborder"><div class="text-[10px] text-gray-400 mb-0.5">Visualizaciones</div><div class="font-display text-base font-black text-white">369,628</div></div>
+                            <div class="p-3 rounded-xl bg-mvbg border border-mvborder"><div class="text-[10px] text-gray-400 mb-0.5">Espectadores</div><div class="font-display text-base font-black text-white">80,643</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REEL 2 -->
+                <div class="rounded-3xl bg-[#121216] border border-mvborder hover:border-mvpink/60 p-5 flex flex-col justify-between shadow-2xl transition-all">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 mb-4 border-b border-mvborder">
+                            <span class="text-xs font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i> Estadísticas del reel</span>
+                            <span class="w-6 h-6 rounded-full bg-mvcard border border-mvborder flex items-center justify-center text-[10px] text-mvpinkLight"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                        </div>
+                        <div class="rounded-2xl bg-gradient-to-br from-amber-950/60 via-mvbg to-mvcard border border-mvborder p-3.5 mb-4 text-center">
+                            <span class="inline-block px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase mb-1.5">Show • @cumbia_rocha</span>
+                            <p class="font-display text-xs font-extrabold text-white leading-snug">"SUENA EN LA PREVIA"</p>
+                        </div>
+                        <div class="grid grid-cols-5 gap-1 text-center py-2.5 mb-4 rounded-xl bg-mvbg border border-mvborder">
+                            <div><i class="fa-regular fa-heart text-xs text-mvpinkLight block mb-0.5"></i><span class="text-[11px] font-bold text-white">361</span></div>
+                            <div><i class="fa-regular fa-comment text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">15</span></div>
+                            <div><i class="fa-solid fa-retweet text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">12</span></div>
+                            <div><i class="fa-regular fa-paper-plane text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">32</span></div>
+                            <div><i class="fa-regular fa-bookmark text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">10</span></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <div class="p-3 rounded-xl bg-mvbg border border-mvborder"><div class="text-[10px] text-gray-400 mb-0.5">Visualizaciones</div><div class="font-display text-base font-black text-white">43,819</div></div>
+                            <div class="p-3 rounded-xl bg-mvbg border border-mvborder"><div class="text-[10px] text-gray-400 mb-0.5">Cuentas alcanzadas</div><div class="font-display text-base font-black text-white">29,054</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REEL 3 -->
+                <div class="rounded-3xl bg-[#121216] border border-mvborder hover:border-mvpink/60 p-5 flex flex-col justify-between shadow-2xl transition-all">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 mb-4 border-b border-mvborder">
+                            <span class="text-xs font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i> Estadísticas del reel</span>
+                            <span class="w-6 h-6 rounded-full bg-mvcard border border-mvborder flex items-center justify-center text-[10px] text-mvpinkLight"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                        </div>
+                        <div class="rounded-2xl bg-gradient-to-br from-fuchsia-950/60 via-mvbg to-mvcard border border-mvborder p-3.5 mb-4 text-center">
+                            <span class="inline-block px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase mb-1.5">Backstage • @cumbia_rocha</span>
+                            <p class="font-display text-xs font-extrabold text-white leading-snug">Cobertura & Mano a Mano Cumbia Rocha</p>
+                        </div>
+                        <div class="grid grid-cols-5 gap-1 text-center py-2.5 mb-4 rounded-xl bg-mvbg border border-mvborder">
+                            <div><i class="fa-regular fa-heart text-xs text-mvpinkLight block mb-0.5"></i><span class="text-[11px] font-bold text-white">1,7 mil</span></div>
+                            <div><i class="fa-regular fa-comment text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">25</span></div>
+                            <div><i class="fa-solid fa-retweet text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">57</span></div>
+                            <div><i class="fa-regular fa-paper-plane text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">51</span></div>
+                            <div><i class="fa-regular fa-bookmark text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">46</span></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <div class="p-3 rounded-xl bg-mvbg border border-mvborder"><div class="text-[10px] text-gray-400 mb-0.5">Visualizaciones</div><div class="font-display text-base font-black text-white">87,643</div></div>
+                            <div class="p-3 rounded-xl bg-mvbg border border-mvborder"><div class="text-[10px] text-gray-400 mb-0.5">Cuentas alcanzadas</div><div class="font-display text-base font-black text-white">50,757</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REEL 4 -->
+                <div class="rounded-3xl bg-[#121216] border border-mvborder hover:border-mvpink/60 p-5 flex flex-col justify-between shadow-2xl transition-all">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 mb-4 border-b border-mvborder">
+                            <span class="text-xs font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-chevron-left text-[10px] text-gray-400"></i> Estadísticas del reel</span>
+                            <span class="w-6 h-6 rounded-full bg-mvcard border border-mvborder flex items-center justify-center text-[10px] text-mvpinkLight"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                        </div>
+                        <div class="rounded-2xl bg-gradient-to-br from-purple-950/60 via-mvbg to-mvcard border border-mvborder p-3.5 mb-4 text-center">
+                            <span class="inline-block px-2.5 py-0.5 rounded-full bg-mvpink/20 text-mvpinkLight text-[10px] font-bold uppercase mb-1.5">Viral • Collab</span>
+                            <p class="font-display text-xs font-extrabold text-white leading-snug">"ÁNDATE FERNANDO"</p>
+                        </div>
+                        <div class="grid grid-cols-5 gap-1 text-center py-2.5 mb-4 rounded-xl bg-mvbg border border-mvborder">
+                            <div><i class="fa-regular fa-heart text-xs text-mvpinkLight block mb-0.5"></i><span class="text-[11px] font-bold text-white">4,8 mil</span></div>
+                            <div><i class="fa-regular fa-comment text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">46</span></div>
+                            <div><i class="fa-solid fa-retweet text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">110</span></div>
+                            <div><i class="fa-regular fa-paper-plane text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">337</span></div>
+                            <div><i class="fa-regular fa-bookmark text-xs text-gray-300 block mb-0.5"></i><span class="text-[11px] font-bold text-white">137</span></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <div class="p-3 rounded-xl bg-mvbg border border-mvborder"><div class="text-[10px] text-gray-400 mb-0.5">Visualizaciones</div><div class="font-display text-base font-black text-white">192,515</div></div>
+                            <div class="p-3 rounded-xl bg-mvbg border border-mvborder"><div class="text-[10px] text-gray-400 mb-0.5">Espectadores</div><div class="font-display text-base font-black text-white">128,159</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SECCIÓN: TRABAJEMOS JUNTOS (CONTACTO) -->
+    <section id="contacto" class="py-20 sm:py-28 bg-gradient-to-b from-mvcard to-mvbg border-t border-mvborder">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-mvpinkLight font-display text-xs font-extrabold tracking-[0.25em] uppercase">Contacto Directo</span>
+                <h2 class="font-display text-4xl sm:text-6xl font-black text-white uppercase mt-2 mb-4">
+                    TRABAJEMOS <span class="text-mvpink">JUNTOS!</span>
+                </h2>
+                <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
+                    ¿Querés cubrir tu próximo show, fiesta, bar o potenciar tu marca en redes? Escribinos directo o armá tu consulta al instante.
+                </p>
+            </div>
+
+            <!-- Accesos Directos -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+                <a href="https://instagram.com/modo.vertical" target="_blank" rel="noopener noreferrer" class="p-6 rounded-2xl bg-mvbg border border-mvborder hover:border-mvpink transition-all flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-xl bg-mvpink/15 text-mvpinkLight group-hover:bg-mvpink group-hover:text-white flex items-center justify-center text-2xl mb-3 transition-colors">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <span class="font-display font-bold text-white text-sm">Instagram</span>
+                    <span class="text-xs text-mvpinkLight font-semibold mt-1">@modo.vertical</span>
+                </a>
+
+                <a href="mailto:modoverticalcontenidos@gmail.com" class="p-6 rounded-2xl bg-mvbg border border-mvborder hover:border-mvpink transition-all flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-xl bg-mvpink/15 text-mvpinkLight group-hover:bg-mvpink group-hover:text-white flex items-center justify-center text-2xl mb-3 transition-colors">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <span class="font-display font-bold text-white text-sm">Email</span>
+                    <span class="text-xs text-mvpinkLight font-semibold mt-1 break-all">modoverticalcontenidos@gmail.com</span>
+                </a>
+
+                <a href="https://wa.me/5491125060873?text=Hola%20Modo%20Vertical!%20Me%20gustar%C3%ADa%20consultar%20por%20una%20cobertura%20de%20contenido." target="_blank" rel="noopener noreferrer" class="p-6 rounded-2xl bg-mvbg border border-mvborder hover:border-emerald-500 transition-all flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white flex items-center justify-center text-2xl mb-3 transition-colors">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <span class="font-display font-bold text-white text-sm">WhatsApp</span>
+                    <span class="text-xs text-emerald-400 font-semibold mt-1">11 2506-0873</span>
+                </a>
+            </div>
+
+            <!-- Formulario Armador de Presupuesto -->
+            <div class="rounded-3xl bg-mvbg border border-mvborder p-6 sm:p-10 shadow-2xl">
+                <h3 class="font-display text-xl sm:text-2xl font-black text-white uppercase mb-6 text-center">Pedí tu presupuesto rápido</h3>
+                <form id="budget-form" onsubmit="generateBudgetMessage(event)" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Nombre o Marca</label>
+                            <input type="text" id="client-name" required placeholder="Ej. Cumbia Rocha / Target Bar" class="w-full px-4 py-3 rounded-xl bg-mvcard border border-mvborder text-white text-sm focus:outline-none focus:border-mvpink">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Tipo de Proyecto</label>
+                            <select id="project-type" class="w-full px-4 py-3 rounded-xl bg-mvcard border border-mvborder text-white text-sm focus:outline-none focus:border-mvpink">
+                                <option value="Show / Recital">Show / Recital</option>
+                                <option value="Fiesta / Evento Social">Fiesta / Evento Social</option>
+                                <option value="Bar / Boliche / Marca">Bar / Boliche / Marca</option>
+                                <option value="Teatro / Turismo / Otro">Teatro / Turismo / Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Detalles (Fecha, lugar o idea)</label>
+                        <textarea id="project-details" rows="3" required placeholder="Contanos qué evento o contenido tenés en mente..." class="w-full px-4 py-3 rounded-xl bg-mvcard border border-mvborder text-white text-sm focus:outline-none focus:border-mvpink"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 rounded-xl bg-mvpink hover:bg-mvpinkLight text-white font-display font-bold text-sm sm:text-base uppercase tracking-wider shadow-lg shadow-mvpink/30 transition-all">
+                        Armar consulta y copiar mensaje <i class="fa-solid fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+
+                <!-- Resultado del mensaje armado -->
+                <div id="message-ready-box" class="hidden mt-6 p-5 rounded-2xl bg-mvcard border border-mvpink/50 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-mvpinkLight uppercase"><i class="fa-solid fa-check-circle mr-1"></i> ¡Mensaje listo y copiado!</span>
+                        <button onclick="copyGeneratedText()" class="text-xs text-gray-300 hover:text-white underline">Volver a copiar</button>
+                    </div>
+                    <p id="generated-text" class="text-sm text-gray-200 bg-mvbg p-4 rounded-xl border border-mvborder"></p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a id="send-email-btn" href="#" class="flex-1 py-2.5 px-4 rounded-xl bg-mvpink text-white text-xs font-bold text-center hover:bg-mvpinkLight transition-colors">
+                            <i class="fa-solid fa-envelope mr-1.5"></i> Abrir en mi Correo
+                        </a>
+                        <a id="send-wa-btn" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-4 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center hover:bg-emerald-500 transition-colors">
+                            <i class="fa-brands fa-whatsapp mr-1.5"></i> Enviar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-mvbg border-t border-mvborder py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-display text-xl font-black text-white">mv</span>
+                <span class="text-mvpink font-black">|</span>
+                <span class="font-display text-xs font-bold tracking-widest uppercase text-gray-400">modo vertical</span>
+            </div>
+            <p class="text-xs text-gray-500">&copy; 2026 Modo Vertical. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <!-- MODAL VISOR DE VIDEO EN GRANDE -->
+    <div id="video-lightbox" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeVideoLightbox(event)">
+        <div class="relative w-full max-w-[360px] aspect-[9/16] bg-black rounded-3xl border-2 border-mvpink shadow-2xl overflow-hidden" onclick="event.stopPropagation()">
+        
+            <!-- Botón Cerrar (X) -->
+            <button onclick="closeVideoLightbox()" class="absolute top-4 right-4 z-30 w-9 h-9 rounded-full bg-black/70 hover:bg-mvpink text-white flex items-center justify-center transition-colors border border-white/20">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Título del video -->
+            <div class="absolute top-4 left-4 right-14 z-30 pointer-events-none">
+                <span id="lightbox-title" class="inline-block px-3 py-1 rounded-full bg-black/70 backdrop-blur-sm text-white text-xs font-bold border border-white/10 truncate max-w-full"></span>
+            </div>
+
+            <!-- Reproductor en grande con controles y sonido -->
+            <video id="lightbox-player" class="w-full h-full object-cover" controls autoplay playsinline></video>
+        </div>
+    </div>
+    <!-- SCRIPTS DE INTERACCIÓN Y CARRUSEL -->
+    <script>
+        // Menú móvil
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileDrawer.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => mobileDrawer.classList.add('hidden'));
+        });
+
+        // Datos de proyectos para el carrusel de videos
+        const projectsData = {
+            cumbiarocha: {
+                title: "CUMBIA ROCHA",
+                tag: "Show & Backstage",
+                instagram: "@cumbia_rocha",
+                desc: "Entrevistas mano a mano en camarines durante festejos de cumpleaños, acceso exclusivo al backstage y previas súper dinámicas con los fans en la fila.",
+                videos: [
+                    { src: "/vids/CumbiaRocha.mp4", title: "Backstage & Camarines", desc: "Mano a mano con el artista", icon: "fa-video", bg: "from-black via-black/60 to-amber-950/40" },
+                    { src: "/vids/CumbiaRocha_3.mp4", title: "Previa con Fans", desc: "Notas en la fila antes del show", icon: "fa-microphone", bg: "from-black via-black/60 to-red-950/40" },
+                    { src: "/vids/CumbiaRocha_2.mp4", title: "Juegos & Premios", desc: "Regalando remeras y pases VIP", icon: "fa-gift", bg: "from-black via-black/60 to-zinc-900" }
+                ]
+            },
+            ruta360: {
+                title: "RUTA 360",
+                tag: "Turismo & Recitales",
+                instagram: "@ruta360.arg",
+                desc: "Cobertura y notas súper divertidas en la previa de recitales, juegos virales como 'Casar, besar y BFF' a bordo y difusión de paquetes de viaje.",
+                videos: [
+                    { src: "/vids/Ruta360_3.mp4", title: "Previa Recital BTS", desc: "Notas con fans en el estadio", icon: "fa-comments", bg: "from-black via-black/60 to-lime-950/50" },
+                    { src: "/vids/Ruta360_2.mp4", title: "Viajes & Destinos", desc: "Traslados a shows y verano", icon: "fa-bus-simple", bg: "from-black via-black/60 to-emerald-950/50" },
+                    { src: "/vids/Ruta360.mp4", title: "Casar, Besar y BFF", desc: "Dinámica en el micro", icon: "fa-heart", bg: "from-black via-black/60 to-zinc-900" }
+                ]
+            },
+            target: {
+                title: "TARGET BAR",
+                tag: "Bar & Noches Temáticas",
+                instagram: "@target.bar",
+                desc: "Cobertura de noches temáticas como Halloween: entrevistas descontracturadas en la puerta y la pista buscando los disfraces más originales.",
+                videos: [
+                    { src: "/vids/Target.mp4", title: "Noche de Disfraces", desc: "Notas en el ingreso de Target", icon: "fa-ghost", bg: "from-black via-black/60 to-yellow-950/50" },
+                    { src: "/vids/Target_2.mp4", title: "Mejores Personajes", desc: "Entrevistas y humor en pista", icon: "fa-trophy", bg: "from-black via-black/60 to-amber-950/50" },
+                    { src: "/vids/Target_3.mp4", title: "Clima de Fiesta", desc: "Reacciones y cierre de noche", icon: "fa-fire", bg: "from-black via-black/60 to-zinc-900" }
+                ]
+            },
+            trucostars: {
+                title: "TRUCOSTARS",
+                tag: "Proyecto & Torneos",
+                instagram: "@trucostars",
+                desc: "Cobertura de torneos de truco y creación de videos comerciales para comunicar la propuesta, mostrar la experiencia y acercar el juego.",
+                videos: [
+                    { src: "/vids/Trucostars_3.mp4", title: "Contenido de Marca", desc: "Momentos destacados del proyecto", icon: "fa-clapperboard", bg: "from-black via-black/60 to-amber-950/50" },
+                    { src: "/vids/Trucostars.mp4", title: "Experiencia & Comunidad", desc: "Contenido dinámico para redes", icon: "fa-users", bg: "from-black via-black/60 to-yellow-950/50" },
+                    { src: "/vids/Trucostars_2.mp4", title: "Reels Destacados", desc: "Cobertura audiovisual en vivo", icon: "fa-fire", bg: "from-black via-black/60 to-zinc-900" }
+                ]
+            },
+            latoxi: {
+                title: "LA TOXI",
+                tag: "Bar & Entretenimiento",
+                instagram: "@latoxi.prod",
+                desc: "Realizamos entrevistas con la gente, generando contenido espontáneo y divertido para mostrar el ambiente y la energía del lugar.",
+                videos: [
+                    { src: "/vids/LaToxi_2.mp4", title: "Entrevistas en Pista", desc: "Espontaneidad y humor", icon: "fa-microphone-lines", bg: "from-black via-black/60 to-pink-950/50" },
+                    { src: "/vids/LaToxi.mp4", title: "La Previa", desc: "Ingreso y clima nocturno", icon: "fa-martini-glass-citrus", bg: "from-black via-black/60 to-purple-950/50" }
+                ]
+            },
+            tinafest: {
+                title: "TINA FEST",
+                tag: "Eventos Sociales",
+                instagram: "@tinafest15",
+                desc: "Cobertura de un cumpleaños de 15 en tiempo real, con creación de contenido durante la fiesta y una cuenta exclusiva para compartir la noche.",
+                videos: [
+                    { src: "/vids/TinaFest_5.mp4", title: "Entrevistas en Pista", desc: "Trivias y juegos", icon: "fa-camera", bg: "from-black via-black/60 to-indigo-950/50" },
+                    { src: "/vids/TinaFest_1.mp4", title: "Fiesta & Baile", desc: "Los mejores momentos en 9:16", icon: "fa-music", bg: "from-black via-black/60 to-rose-950/50" }
+                ]
+            }
+        };
+
+        const projectKeys = Object.keys(projectsData);
+        let currentProjectIndex = 0;
+
+        function switchProject(key) {
+            currentProjectIndex = projectKeys.indexOf(key);
+            const data = projectsData[key];
+            
+            // Actualizar botones de pestañas
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-mvpink', 'text-white', 'shadow-md');
+                btn.classList.add('bg-mvcard', 'text-gray-300', 'border', 'border-mvborder');
+                if(btn.getAttribute('onclick').includes(key)) {
+                    btn.classList.remove('bg-mvcard', 'text-gray-300', 'border', 'border-mvborder');
+                    btn.classList.add('bg-mvpink', 'text-white', 'shadow-md');
+                }
+            });
+
+            // Renderizar contenido dinámico del carrusel
+            const displayArea = document.getElementById('carousel-display-area');
+            
+            let videosHTML = '';
+            data.videos.forEach((v, index) => {
+                videosHTML += `
+                    <div class="phone-mockup group">
+                        <div class="phone-island"></div>
+                        <!-- Video en loop fluido simulado con video sample público -->
+                        <video class="w-full h-full object-cover" autoplay muted loop playsinline src="${v.src}"></video>
+                        <div class="absolute inset-0 bg-gradient-to-t ${v.bg} p-5 flex flex-col justify-between pointer-events-none">
+                            <div class="pt-6 flex justify-between items-center text-[11px] font-bold text-mvpinkLight">
+                                <span>${data.instagram}</span>
+                                <span class="px-2 py-0.5 rounded bg-black/70 border border-white/10 text-white">9:16</span>
+                            </div>
+                            <div class="text-center my-auto pointer-events-auto">
+                                <div class="w-12 h-12 rounded-full bg-mvpink/20 border border-mvpink/50 text-mvpinkLight flex items-center justify-center mx-auto mb-3 shadow-lg">
+                                    <i class="fa-solid ${v.icon}"></i>
+                                </div>
+                                <p class="font-display text-xs font-extrabold text-white uppercase mb-1">${v.title}</p>
+                                <p class="text-[11px] text-gray-300">${v.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            displayArea.innerHTML = `
+                <div class="rounded-3xl bg-gradient-to-br from-mvcard via-[#14111a] to-mvbg border border-mvborder p-6 sm:p-10 shadow-2xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-4 space-y-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mvpink/15 border border-mvpink/30 text-mvpinkLight text-xs font-bold uppercase tracking-wider">
+                                <i class="fa-solid fa-star"></i> ${data.tag}
+                            </div>
+                            <h3 class="font-display text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
+                                ${data.title}
+                            </h3>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-bold text-mvpinkLight hover:underline">
+                                <i class="fa-brands fa-instagram"></i> ${data.instagram}
+                            </a>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                                ${data.desc}
+                            </p>
+                            <div class="pt-2 text-xs text-gray-400 font-semibold flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check text-mvpink"></i> Reproducción automática optimizada 9:16
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-${data.videos.length > 2 ? '3' : '2'} gap-4">
+                            ${videosHTML}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function nextProject() {
+            currentProjectIndex = (currentProjectIndex + 1) % projectKeys.length;
+            switchProject(projectKeys[currentProjectIndex]);
+        }
+
+        function prevProject() {
+            currentProjectIndex = (currentProjectIndex - 1 + projectKeys.length) % projectKeys.length;
+            switchProject(projectKeys[currentProjectIndex]);
+        }
+
+        // Inicializar primer proyecto al cargar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            switchProject('cumbiarocha');
+        });
+
+        // Armador de mensaje de presupuesto
+        let lastMessage = '';
+        function generateBudgetMessage(e) {
+            e.preventDefault();
+            const name = document.getElementById('client-name').value.trim();
+            const type = document.getElementById('project-type').value;
+            const details = document.getElementById('project-details').value.trim();
+
+            lastMessage = `Hola Modo Vertical! Soy ${name}. Me gustaría pedir presupuesto para un proyecto de tipo "${type}". Detalles: ${details}`;
+
+            document.getElementById('generated-text').textContent = lastMessage;
+            document.getElementById('message-ready-box').classList.remove('hidden');
+
+            const encoded = encodeURIComponent(lastMessage);
+            document.getElementById('send-email-btn').href = `mailto:modoverticalcontenidos@gmail.com?subject=${encodeURIComponent('Consulta Portfolio - ' + name)}&body=${encoded}`;
+            document.getElementById('send-wa-btn').href = `https://wa.me/5491125060873?text=${encoded}`;
+
+            copyGeneratedText();
+        }
+
+        function copyGeneratedText() {
+            if (!lastMessage) return;
+            const tempInput = document.createElement('textarea');
+            tempInput.value = lastMessage;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+        }
+        // Abrir video en grande
+    function openVideoLightbox(videoSrc, videoTitle = '') {
+        if (!videoSrc) return;
+        const modal = document.getElementById('video-lightbox');
+        const player = document.getElementById('lightbox-player');
+        const titleEl = document.getElementById('lightbox-title');
+
+        player.src = videoSrc;
+        titleEl.textContent = videoTitle;
+        titleEl.style.display = videoTitle ? 'inline-block' : 'none';
+
+        modal.classList.remove('hidden');
+        player.play().catch(() => {});
+    }
+
+// Cerrar video en grande (al tocar la X, el fondo oscuro o la tecla Escape)
+    function closeVideoLightbox() {
+        const modal = document.getElementById('video-lightbox');
+        const player = document.getElementById('lightbox-player');
+
+        player.pause();
+        player.src = ''; // Libera la memoria y corta el audio al instante
+        modal.classList.add('hidden');
+    }
+
+// Cerrar también si el usuario presiona la tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeVideoLightbox();
+    });
+    // Detecta clics en cualquier celular (.phone-mockup) o video de la sección Nosotros
+document.addEventListener('click', (e) => {
+    // Si tocó un botón de control pequeño (silenciar/pausar), no abrir el modal
+    if (e.target.closest('button')) return;
+
+    const phone = e.target.closest('.phone-mockup');
+    if (phone) {
+        const video = phone.querySelector('video');
+        const title = phone.querySelector('h4, p')?.textContent || 'Modo Vertical';
+        if (video && video.getAttribute('src')) {
+            openVideoLightbox(video.getAttribute('src'), title);
+        }
+    }
+});
+    </script>
+</body>
+</html>
